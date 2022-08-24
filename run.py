@@ -1,3 +1,12 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+import random
+from word_list import words
+
+
+def get_word():
+    """
+    Get a random word from the word list
+    """
+    word = random.choice(words)
+    return word.upper()
+
+
