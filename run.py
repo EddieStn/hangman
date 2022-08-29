@@ -4,6 +4,7 @@ import time
 
 word = random.choice(word_list)
 
+
 def greeting():
     """
     Welcomes the player into the game
@@ -20,9 +21,10 @@ def greeting():
 
 greeting()
 
+
 def display_hangman(attempt):
     """
-    Display the different levels of hangman based of number of failures
+    Display the different stages of hangman based of number of failures
     """
     if attempt == 0:
         print("""
@@ -81,10 +83,28 @@ def display_hangman(attempt):
             |  / \\
             ______""") 
     return attempt
+    # Change function to array of stages
 
 
 attempt = display_hangman(0)
 
+
+def game_mode():
+    mode = input("Choose game mode (EASY/HARD): ")
+    mode = mode.upper()
+    no_of_attempts = display_hangman(attempt)
+    if mode != "EASY" and mode != "HARD":
+        print("Invalid input, try EASY/HARD")
+    elif mode == "easy":
+        no_of_attempts = 6
+        print("You chose EASY, you get 6 attempts")
+    else:
+        no_of_attempts = 3
+        print("You chose HARD, you get 3 attempts")
+    return mode
+
+
+game_mode()
 
 
 def check_guess():
@@ -100,18 +120,17 @@ def check_guess():
         print(hidden_word)
         guess = input("Guess a letter: ")
         guess = guess.upper()
-        for letter in guess:
-            if letter.isalpha():
-                if len(letter) > 1:
-                    print("You can only choose one letter")
+        if len(guess) > 1:
+            print("You can only choose one letter")
+        if guess.isalpha():
+            if guess in word:
+                print(f"That is correct, {guess} is in the word")
             else:
-                print("Not a letter, try again.")
-        if guess in word:
-            print(f"That is correct, {guess} is in the word")
+                print(f"{guess} is not in the word. attempts left: {attempt}")
         else:
-            attempt += 1
-            print(f"{guess} is not in the word. attempts left: {attempt}")
+            print("Not a letter, try again.")
+        attempt += 1
+        
     
-
 check_guess()
     
