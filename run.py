@@ -2,7 +2,13 @@ from words import word_list
 import random
 import time
 
-word = random.choice(word_list)
+
+def get_word():
+    """
+    Get a random word form the word list
+    """
+    word = random.choice(word_list)
+    return word.upper()
 
 
 def greeting():
@@ -19,7 +25,7 @@ def greeting():
     time.sleep(1)
 
 
-greeting()
+# greeting()
 
 
 def display_hangman(attempt):
@@ -86,51 +92,46 @@ def display_hangman(attempt):
     # Change function to array of stages
 
 
-attempt = display_hangman(0)
+# attempt = display_hangman(0)
 
 
 def game_mode():
     mode = input("Choose game mode (EASY/HARD): ")
-    mode = mode.upper()
-    no_of_attempts = display_hangman(attempt)
+    max_fails = display_hangman(attempt)
     if mode != "EASY" and mode != "HARD":
         print("Invalid input, try EASY/HARD")
     elif mode == "easy":
-        no_of_attempts = 6
+        max_fails = 6
         print("You chose EASY, you get 6 attempts")
     else:
-        no_of_attempts = 3
+        max_fails = 3
         print("You chose HARD, you get 3 attempts")
-    return mode
+    return mode.upper()
 
 
-game_mode()
+# game_mode()
 
 
 def check_guess():
     """
     Check whether player`s input is a letter or not
     """
-    global attempt
-    
-    while attempt <= 6:
-        attempt = 0
-        print("The word is:")
-        hidden_word = "_" * len(word)
-        print(hidden_word)
+    while True:
         guess = input("Guess a letter: ")
         guess = guess.upper()
-        if len(guess) > 1:
-            print("You can only choose one letter")
-        if guess.isalpha():
-            if guess in word:
-                print(f"That is correct, {guess} is in the word")
-            else:
-                print(f"{guess} is not in the word. attempts left: {attempt}")
+        if guess.isalpha() and len(guess) == 1:
+            print(f"{guess} is Valid")
         else:
-            print("Not a letter, try again.")
-        attempt += 1
+            print(f"{guess} Invalid. Try one letter")
+    
         
-    
 check_guess()
-    
+
+
+
+   
+    # while attempt <= 6:
+    #     attempt = 0
+    #     print("The word is:")
+    #     hidden_word = "_" * len(word)
+    #     print(hidden_word)
