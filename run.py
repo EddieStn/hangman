@@ -1,6 +1,8 @@
-from words import word_list
 import random
 import time
+from words import word_list
+
+# \n after every input?
 
 
 def get_word():
@@ -12,9 +14,6 @@ def get_word():
 
 
 # menu, play / instructions (rules)
-# play again?
-# already guessed
-# guess word?
 
 
 def greeting():
@@ -23,15 +22,12 @@ def greeting():
     """
     print("Welcome to hangman!")
     time.sleep(0.5)
-    player = input("Choose a nickname:")
+    player = input("Choose a nickname:\n")
     time.sleep(0.5)
     print(f"Hello, {player}, the game starts now!")
     time.sleep(1)
     print("Good luck!")
     time.sleep(1)
-
-
-# greeting()
 
 
 def display_hangman(fails):
@@ -99,6 +95,22 @@ def display_hangman(fails):
     return stages[fails]
 
 
+def play_loop():
+    """
+    Game loop, asks the user if they want to play again
+    """
+    play_again = input("Play Again? (Y/N):\n")
+    while play_again not in ["y", "n", "Y", "N"]:
+        play_again = input("Play Again? (Y for yes / N for no):\n")
+    if play_again == "y":
+        hangman(word)
+    elif play_again == "n":
+        time.sleep(0.5)
+        print("Thank you for playing.")
+        time.sleep(0.5)
+        print("See you next time!")
+
+
 # def check_guess(word):
 #     """
 #     Check whether player`s input is a letter or not
@@ -128,9 +140,9 @@ def hangman(word):
     fails = 0
     guessed = False
     print(display_hangman(fails))
-    print(f"The word is: \n{hidden_word}")
+    print(f"The word is: \n{hidden_word}\n")
     while not guessed and fails < 6:
-        guess = input("Please guess a letter or word: ").upper()
+        guess = input("Please guess a letter or word:\n").upper()
         if guess.isalpha() and len(guess) == 1:
             if guess in guessed_letters:
                 print(f"You already guessed the letter: {guess}")
@@ -165,53 +177,18 @@ def hangman(word):
         print(hidden_word)
         print("\n")
     if guessed:
-        print("WEll DONE! You guessed the word!")
+        print("WEll DONE! You guessed the word!\n")
+        time.sleep(1)
+        play_loop()
     else:
-        print(f"You got hanged! Better luck next time. The word was {word}")
+        print(f"You got hanged! Better luck next time. The word was {word}\n")
+        time.sleep(1)
+        play_loop()
 
 
-def play():
-    word = get_word()
-    hangman(word)
-    while input("Play Again? (Y/N) ").upper() == "Y":
-        word = get_word()
-        hangman(word)
-
-
-play()
-
-
-# while not guessed and fails < 0:
-#         guess = input("Guess a letter: ").upper()
-#         if guess.isalpha() and len(guess) == 1:
-#             if guess in guessed_letters:
-#                 print(f"You already guessed: {guess} ")
-#             elif guess not in word:
-#                 print(f"{guess} is not in the word.")
-#                 fails -= 1
-#                 guessed_letters.append(guess)
-#             else:
-#                 print(f"Good job, {guess} is in the word!")
-#                 guessed_letters.append(guess)
-#                 word_as_list = list(hidden_word)
-#                 indices = [i for i, letter in enumerate(
-#                     word) if letter == guess]
-#                 for index in indices:
-#                     word_as_list[index] = guess
-#                 hidden_word = "".join(word_as_list)
-#                 if "_" not in hidden_word:
-#                     guessed = True
-#         else:
-#             print(f"{guess} Invalid. Try one letter")
-#         print(display_hangman(fails))
-#         print(hidden_word)
-#         print("\n")
-#     if guessed:
-#         print("Congrats, you guessed the word! You win!")
-#     else:
-#         print("Sorry, you ran out of tries. The word was " +
-#               word + ". Maybe next time!")
-
+greeting()
+word = get_word()
+hangman(word)
 
 
 # def game_mode():
@@ -253,8 +230,3 @@ play()
 
 
 # get_mode()
-
-
-# while attempt <= 6:
-#     attempt = 0
-#     
