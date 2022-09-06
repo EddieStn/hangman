@@ -13,9 +13,6 @@ def get_word():
     return word.upper()
 
 
-# menu, play / instructions (rules)
-
-
 def greeting():
     """
     Welcomes the player into the game
@@ -24,9 +21,9 @@ def greeting():
     time.sleep(0.5)
     player = input("Choose a nickname:\n")
     time.sleep(0.5)
-    print(f"Hello, {player}, the game starts now!")
+    print(f"Hello, {player}, See the menu before we start the game")
     time.sleep(1)
-    print("Good luck!")
+    menu()
     time.sleep(1)
 
 
@@ -99,10 +96,12 @@ def play_loop():
     """
     Game loop, asks the user if they want to play again
     """
+    word = get_word()
     play_again = input("Play Again? (Y/N):\n")
     while play_again not in ["y", "n", "Y", "N"]:
         play_again = input("Play Again? (Y for yes / N for no):\n")
     if play_again == "y":
+        time.sleep(1)
         hangman(word)
     elif play_again == "n":
         time.sleep(0.5)
@@ -134,6 +133,7 @@ def hangman(word):
     The main loop that checks if user input is valid
     and whether it`s in the word
     """
+    word = get_word()
     guessed_letters = []
     guessed_words = []
     hidden_word = "_" * len(word)
@@ -186,47 +186,38 @@ def hangman(word):
         play_loop()
 
 
+def menu():
+    """
+    Prompts the user with a choice to see the rules before playing
+    """
+    word = get_word()
+    while True:
+        try:
+            choice = input(
+                "For instructions type 'RULES', to start game type 'PLAY':\n")
+            choice = choice.lower()
+            if choice == "play":
+                time.sleep(1)
+                hangman(word)
+            elif choice == "rules":
+                print("\n- Hangman is a puzzle game")
+                print("- Your goal is to guess the secret word")
+                print("- You can guess one letter at a time or the whole word")
+                print("- You've only got 6 wrong attempts before you hang")
+                print("- That been said, good luck and have fun!\n")
+                start = input("Start playing? (Y - yes / N - no): \n")
+                while start not in ["y", "n", "Y", "N"]:
+                    start = input("Start playing? (Y for yes / N for no): \n")
+                if start == "y":
+                    time.sleep(1)
+                    hangman(word)
+                elif start == "n":
+                    print("\nThat`s a shame, maybe some other time.")
+            else:
+                raise ValueError("That is not a valid input")
+            break
+        except ValueError as v_e:
+            print(v_e)
+
+
 greeting()
-word = get_word()
-hangman(word)
-
-
-# def game_mode():
-#     mode = input("Choose game mode (EASY/HARD): ")
-#     max_fails = stages
-#     if mode != "EASY" and mode != "HARD":
-#         print("Invalid input, try EASY/HARD")
-#     elif mode == "easy":
-#         max_fails = stages
-#         print("You chose EASY, you get 6 attempts")
-#     else:
-#         max_fails = stages[1:-1:2]
-#         print("You chose HARD, you get 3 attempts")
-#     return mode.upper()
-
-
-# def get_mode():
-#     """
-#     Prompt the user to choose game mode
-#     """
-#     global stages
-#     while True:
-#         try:
-#             mode = input("Choose game mode (EASY/HARD): ")
-#             mode = mode.upper()
-#             if mode == 'easy':
-#                 print("You chose EASY")
-#                 return stages
-#             elif mode == 'hard':
-#                 print("You chose HARD")
-#                 stages = stages[1:-1:2]
-#                 return stages
-#             else:
-#                 return stages
-#         except ValueError():
-#             if mode != "easy" and mode != "hard":
-#                 print("Invalid input, choose EASY/HARD")
-#         return
-
-
-# get_mode()
