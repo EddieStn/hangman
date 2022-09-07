@@ -1,8 +1,18 @@
+"""
+Hangman game using functions, if and while loops,
+try blocks, handles user input and uses time.sleep()
+for better user experience
+"""
+
+
 import random
 import time
-from words import word_list
+from assets import word_list
+from assets import display_hangman
+
 
 # \n after every input?
+# requirements empty
 
 
 def get_word():
@@ -15,7 +25,8 @@ def get_word():
 
 def greeting():
     """
-    Welcomes the player into the game
+    Welcomes the player into the game and brings up the menu()
+    which starts the game or shows the rules
     """
     print("Welcome to hangman!")
     time.sleep(0.5)
@@ -25,89 +36,6 @@ def greeting():
     time.sleep(1)
     menu()
     time.sleep(1)
-
-
-def display_hangman(fails):
-    """
-    Display the different stages of hangman based of number of failures
-    """
-    stages = [
-        """
-        +---+
-        |   |
-        |
-        |
-        |
-        ______
-        """,
-        """
-        +---+
-        |   |
-        |   O
-        |
-        |
-        ______
-        """,
-        """
-        +---+
-        |   |
-        |   O
-        |   |
-        |
-        ______
-        """,
-        """
-        +---+
-        |   |
-        |   O
-        |  /|
-        |
-        ______
-        """,
-        """
-        +---+
-        |   |
-        |   O
-        |  /|\\
-        |
-        ______
-        """,
-        """
-        +---+
-        |   |
-        |   O
-        |  /|\\
-        |  /
-        ______
-        """,
-        """
-        +---+
-        |   |
-        |   O
-        |  /|\\
-        |  / \\
-        ______
-        """
-    ]
-    return stages[fails]
-
-
-def play_loop():
-    """
-    Game loop, asks the user if they want to play again
-    """
-    word = get_word()
-    play_again = input("Play Again? (Y/N):\n")
-    while play_again not in ["y", "n", "Y", "N"]:
-        play_again = input("Play Again? (Y for yes / N for no):\n")
-    if play_again == "y":
-        time.sleep(1)
-        hangman(word)
-    elif play_again == "n":
-        time.sleep(0.5)
-        print("Thank you for playing.")
-        time.sleep(0.5)
-        print("See you next time!")
 
 
 # def check_guess(word):
@@ -134,9 +62,9 @@ def hangman(word):
     and whether it`s in the word
     """
     word = get_word()
+    hidden_word = "_" * len(word)
     guessed_letters = []
     guessed_words = []
-    hidden_word = "_" * len(word)
     fails = 0
     guessed = False
     print(display_hangman(fails))
@@ -189,6 +117,7 @@ def hangman(word):
 def menu():
     """
     Prompts the user with a choice to see the rules before playing
+    and also starts the game should they wish to play
     """
     word = get_word()
     while True:
@@ -200,11 +129,17 @@ def menu():
                 time.sleep(1)
                 hangman(word)
             elif choice == "rules":
-                print("\n- Hangman is a puzzle game")
-                print("- Your goal is to guess the secret word")
-                print("- You can guess one letter at a time or the whole word")
-                print("- You've only got 6 wrong attempts before you hang")
+                print("\n- Hangman is a puzzle game\n")
+                time.sleep(1)
+                print("- Your goal is to guess the secret word\n")
+                time.sleep(1)
+                print(
+                    "- You can guess one letter at a time or the whole word\n")
+                time.sleep(1)
+                print("- You've only got 6 wrong attempts before you hang\n")
+                time.sleep(1)
                 print("- That been said, good luck and have fun!\n")
+                time.sleep(1)
                 start = input("Start playing? (Y - yes / N - no): \n")
                 while start not in ["y", "n", "Y", "N"]:
                     start = input("Start playing? (Y for yes / N for no): \n")
@@ -218,6 +153,25 @@ def menu():
             break
         except ValueError as v_e:
             print(v_e)
+
+
+def play_loop():
+    """
+    Game loop, asks the user if they want to play again
+    and if so it restarts the game
+    """
+    word = get_word()
+    play_again = input("Play Again? (Y/N):\n")
+    while play_again not in ["y", "n", "Y", "N"]:
+        play_again = input("Play Again? (Y for yes / N for no):\n")
+    if play_again == "y":
+        time.sleep(1)
+        hangman(word)
+    elif play_again == "n":
+        time.sleep(0.5)
+        print("Thank you for playing.")
+        time.sleep(0.5)
+        print("See you next time!")
 
 
 greeting()
