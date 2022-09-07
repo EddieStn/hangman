@@ -31,6 +31,9 @@ def greeting():
     print("Welcome to hangman!")
     time.sleep(0.5)
     player = input("Choose a nickname:\n")
+    while not player.strip():
+        print("You can`t have an empty nickname...")
+        player = input("Choose a nickname:\n")
     time.sleep(0.5)
     print(f"Hello, {player}, See the menu before we start the game")
     time.sleep(1)

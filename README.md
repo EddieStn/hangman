@@ -22,7 +22,29 @@ No errors found when running the code through pep8 online checker.
 
 # Bugs
 
-The underscores on Heroku did not have any spacing between them
+* The underscores on Heroku did not have any spacing between them
+* only white spaces would work for the name input > at first created a function to check for valid_input but then I made it redundant because I found a simpler approach using a while loop
+
+```
+def valid_input(text):
+    """
+    Checks that the user input doesn`t have only blank spaces
+    """
+    not_valid = True
+    result = ''
+    while not_valid:
+        result = input(text)
+        print("You can`t have an empty nickname...")
+        if result.split():
+            not_valid = False
+    return result
+```
+```
+player = input("Choose a nickname:\n")
+    while not player.strip():
+        print("You can`t have an empty nickname...")
+        player = input("Choose a nickname:\n")
+```
 
 # Local Development
 
