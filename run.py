@@ -6,13 +6,14 @@ for better user experience
 
 
 import random
+import os
 import time
 from assets import word_list
 from assets import display_hangman
 
 
-# \n after every input?
-# requirements empty
+# underscores in heroku don`t have any spacing
+# clear terminal after guess
 
 
 def get_word():
@@ -28,7 +29,7 @@ def greeting():
     Welcomes the player into the game and brings up the menu()
     which starts the game or shows the rules
     """
-    print("Welcome to hangman!")
+    print("Welcome to HANGMAN!")
     time.sleep(0.5)
     player = input("Choose a nickname:\n")
     while not player.strip():
@@ -41,22 +42,15 @@ def greeting():
     time.sleep(1)
 
 
-# def check_guess(word):
-#     """
-#     Check whether player`s input is a letter or not
-#     """
-#     guessed_letters = []
-#     while True:
-#         guess = input("Guess a letter: ").upper()
-#         if guess.isalpha() and len(guess) == 1:
-#             if guess in guessed_letters:
-#                 print(f"You already guessed: {guess} ")
-#             elif guess not in word:
-#                 print(f"{guess} is not in the word.")
-#                 guessed_letters.append(guess)
-#         else:
-#             print(f"{guess} Invalid. Try one letter")
-#     return guess
+def clear_terminal():
+    """
+    Clears the terminal automatically so user will get a fresh screen
+    after every guess or new game
+    """
+    command = 'clear'
+    if os.name in ('nt', 'dos'):
+        command = 'cls'
+    os.system(command)
 
 
 def hangman(word):
@@ -70,11 +64,13 @@ def hangman(word):
     guessed_words = []
     fails = 0
     guessed = False
+    clear_terminal()
     print(display_hangman(fails))
     print(f"The word is: \n{hidden_word}\n")
     while not guessed and fails < 6:
         guess = input("Please guess a letter or word:\n").upper()
         if guess.isalpha() and len(guess) == 1:
+            clear_terminal()
             if guess in guessed_letters:
                 print(f"You already guessed the letter: {guess}")
             elif guess not in word:
@@ -92,6 +88,7 @@ def hangman(word):
                 hidden_word = "".join(word_as_list)
                 if "_" not in hidden_word:
                     guessed = True
+            print(f"Letters guessed already: {guessed_letters}")
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
                 print("You already guessed the word", guess)
@@ -104,6 +101,7 @@ def hangman(word):
                 hidden_word = word
         else:
             print(f"{guess} Invalid. Try one letter")
+            print(f"Letters guessed already: {guessed_letters}")
         print(display_hangman(fails))
         print(hidden_word)
         print("\n")
