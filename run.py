@@ -29,11 +29,11 @@ def greeting():
     Welcomes the player into the game and brings up the menu()
     which starts the game or shows the rules
     """
-    print("Welcome to HANGMAN!")
+    print("Welcome to HANGMAN!\n")
     time.sleep(0.5)
     player = input("Choose a nickname:\n")
     while not player.strip():
-        print("You can`t have an empty nickname...")
+        print("Sorry, You can`t have an empty nickname...")
         player = input("Choose a nickname:\n")
     time.sleep(0.5)
     print(f"Hello, {player}, See the menu before we start the game")

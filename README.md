@@ -10,13 +10,33 @@ And hangman is a word-guessing puzzle where you are given a secret word, knowing
 
 # Technology 
 
+* Python
+* Heroku
+* Github
+* Gitpod
+
+## Libraries 
+
+* Random
+* Os
+* Time
+
+# User stories
+
+* I want to see a fresh screen after a guess
+    * Created a function to clear the terminal after each guess and when a new game begins
+* I want to be able to see game instructions
+    * Created the menu function which gives user the choice to either play or see the rules before playing
+* I want to see the already guessed letters
+    * Printed the already_guessed letters list for the user before new guess input
+
 # Testing
 
 Testing for this project has been done manually and thoroughly by me and some people that I asked to try it out, trying to break the code in every possible way, but failed. All feedback received was positive and no errors encountered when playing, other than not guessing the word :). However, it does not work on mobile.
 
 ## Code validation
 
-No errors found when running the code through pep8 online checker.
+No errors found when running the code through pep8 online checker. Same for both assets.py and run.py
 
 <img src="assets/pep8.png" alt="code validator pep8" width="600">
 
@@ -65,9 +85,11 @@ player = input("Choose a nickname:\n")
 6. Type git clone, and then paste the URL you copied earlier. It will look like this, with your GitHub username instead of YOUR-USERNAME:
    - git clone https://github.com/YOUR-USERNAME/hangman
 7. Press Enter. Your local clone will be created.
+8. Requirements.txt can be left empty as this project does not use any external libraries.
 
 # Deployment
 ### The site was deployed to Heroku. The steps to deploy are as follows:
+
 
 * Log in to Heroku Heroku
 * Click New
@@ -86,6 +108,7 @@ The live link can be found here - (https://hangman25.herokuapp.com/)
 
 # Credits
 
+[Hangman tutorial](https://github.com/kiteco/python-youtube-code/blob/master/build-hangman-in-python/hangman.py) - this project tutorial helped me find a solution to a issue i had, using enumerate to swap each "_" to the guessed letter.
 # Acknowledgements
 
 * Many thanks to Chris Quinn, my mentor, for guidance and for his brilliant ideas
