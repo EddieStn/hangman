@@ -12,10 +12,6 @@ from assets import word_list
 from assets import display_hangman
 
 
-# underscores in heroku don`t have any spacing
-# clear terminal after guess
-
-
 def get_word():
     """
     Get a random word form the word list
@@ -36,7 +32,7 @@ def greeting():
         print("Sorry, You can`t have an empty nickname...")
         player = input("Choose a nickname:\n")
     time.sleep(0.5)
-    print(f"Hello, {player}, See the menu before we start the game")
+    print(f"Hello, {player}! See the menu before we start the game")
     time.sleep(1)
     menu()
     time.sleep(1)
@@ -67,6 +63,7 @@ def hangman(word):
     clear_terminal()
     print(display_hangman(fails))
     print(f"The word is: \n{hidden_word}\n")
+    print(f"The word has {len(hidden_word)} letters")
     while not guessed and fails < 6:
         guess = input("Please guess a letter or word:\n").upper()
         if guess.isalpha() and len(guess) == 1:
@@ -100,6 +97,7 @@ def hangman(word):
                 guessed = True
                 hidden_word = word
         else:
+            clear_terminal()
             print(f"{guess} Invalid. Try one letter")
             print(f"Letters guessed already: {guessed_letters}")
         print(display_hangman(fails))
@@ -123,10 +121,11 @@ def menu():
     word = get_word()
     while True:
         try:
-            choice = input(
-                "For instructions type 'RULES', to start game type 'PLAY':\n")
+            print("For instructions type 'RULES'")
+            print("To start the game type 'START'")
+            choice = input("\n")
             choice = choice.lower()
-            if choice == "play":
+            if choice == "start":
                 time.sleep(1)
                 hangman(word)
             elif choice == "rules":
@@ -150,9 +149,10 @@ def menu():
                 elif start == "n":
                     print("\nThat`s a shame, maybe some other time.")
             else:
-                raise ValueError("That is not a valid input")
+                raise ValueError("That is not a valid input\n")
             break
         except ValueError as v_e:
+            clear_terminal()
             print(v_e)
 
 

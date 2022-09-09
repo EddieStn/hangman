@@ -32,7 +32,11 @@ And hangman is a word-guessing puzzle where you are given a secret word, knowing
 
 # Testing
 
-Testing for this project has been done manually and thoroughly by me and some people that I asked to try it out, trying to break the code in every possible way, but failed. All feedback received was positive and no errors encountered when playing, other than not guessing the word :). However, it does not work on mobile.
+### Testing for this project has been done manually and thoroughly by me and some people that I asked to try it out, trying to break the code in every possible way, but failed.
+
+### All feedback received was positive and no errors encountered when playing, other than not guessing the word :).
+
+### To play on mobile, you need to choose desktop mode in the browser.
 
 ## Code validation
 
@@ -43,28 +47,29 @@ No errors found when running the code through pep8 online checker. Same for both
 # Bugs
 
 * The underscores on Heroku did not have any spacing between them
-* only white spaces would work for the name input > at first created a function to check for valid_input but then I made it redundant because I found a simpler approach using a while loop
+* only white spaces would work for the name input 
+    * at first created a function to check for valid_input but then I made it redundant because I found a simpler approach using a while loop
 
-```
-def valid_input(text):
-    """
-    Checks that the user input doesn`t have only blank spaces
-    """
-    not_valid = True
-    result = ''
-    while not_valid:
-        result = input(text)
-        print("You can`t have an empty nickname...")
-        if result.split():
-            not_valid = False
-    return result
-```
-```
-player = input("Choose a nickname:\n")
-    while not player.strip():
-        print("You can`t have an empty nickname...")
+        ```
+        def valid_input(text):
+            """
+            Checks that the user input doesn`t have only blank spaces
+            """
+            not_valid = True
+            result = ''
+            while not_valid:
+                result = input(text)
+                print("You can`t have an empty nickname...")
+                if result.split():
+                    not_valid = False
+            return result
+        ```
+        ```
         player = input("Choose a nickname:\n")
-```
+            while not player.strip():
+                print("You can`t have an empty nickname...")
+                player = input("Choose a nickname:\n")
+        ```
 
 # Local Development
 
@@ -108,7 +113,17 @@ The live link can be found here - (https://hangman25.herokuapp.com/)
 
 # Credits
 
-[Hangman tutorial](https://github.com/kiteco/python-youtube-code/blob/master/build-hangman-in-python/hangman.py) - this project tutorial helped me find a solution to a issue i had, using enumerate to swap each "_" to the guessed letter.
+[Hangman tutorial](https://github.com/kiteco/python-youtube-code/blob/master/build-hangman-in-python/hangman.py) - this project tutorial helped me find a solution to a issue I had, using enumerate to swap each "_" to the guessed letter.
+
+        ```
+        word_as_list = list(hidden_word)
+        indices = [i for i, letter in enumerate(
+            word) if letter == guess]
+        for index in indices:
+            word_as_list[index] = guess
+        hidden_word = "".join(word_as_list)
+        ```
+
 # Acknowledgements
 
 * Many thanks to Chris Quinn, my mentor, for guidance and for his brilliant ideas
@@ -116,4 +131,4 @@ The live link can be found here - (https://hangman25.herokuapp.com/)
 ## Websites that thought me python
 
 * [code with mosh](https://codewithmosh.com/)
-* 
+* [Code Institute](https://learn.codeinstitute.net)
