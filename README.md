@@ -2,9 +2,9 @@
 
 [Live link](https://hangman25.herokuapp.com/)
 
-## This is a simple hangman game project, built with python, deployed on Heroku and is strictly terminal-based for user interaction.
-## This project is designed for people who love puzzles, maybe bringing them back childhood memories, even tho it being somehow offensive, it's just a fun, thinking game.
-## hangman is a word-guessing puzzle where you are given a secret word, knowing only the length of it by underscores. And by guessing out some letters, try to figure out the secret word before the man hangs, when each wrong attempt adds a part of the man's body to the gallows.
+### This is a simple hangman game project, built with python, deployed on Heroku and is strictly terminal-based for user interaction.
+### This project is designed for people who love puzzles, maybe bringing them back childhood memories, even tho it being somehow offensive, it's just a fun, thinking game.
+### hangman is a word-guessing puzzle where you are given a secret word, knowing only the length of it by underscores. And by guessing out some letters, try to figure out the secret word before the man hangs, when each wrong attempt adds a part of the man's body to the gallows.
 
 # Features
 
@@ -104,7 +104,7 @@
 
 # Testing
 
-### Testing for this project has been done manually and thoroughly by me and some people that I asked to try it out, trying to break the code in every possible way, but failed.
+### Testing for this project has been done manually and thoroughly (as seen in the screenshots above) by me and some people that I asked to try it out, trying to break the code in every possible way, but failed.
 
 ### All feedback received was positive and no errors encountered when playing, other than not guessing the word :).
 
@@ -112,15 +112,15 @@
 
 ## Code validation
 
-No errors found when running the code through pep8 online checker. Same for both assets.py and run.py
+### No errors found when running the code through pep8 online checker. Same for both assets.py and run.py
+* To mantain run.py cleaner (the main file), moved the words array and the hangman stages array into assets.py and imported them to run.py
 
 <img src="assets/pep8.png" alt="code validator pep8" width="600">
 
 # Bugs
 
-* The underscores on Heroku did not have any spacing between them
-* only white spaces would work for the name input 
-    * at first created a function to check for valid_input but then I made it redundant because I found a simpler approach using a while loop
+* White spaces only would work for the name input 
+    * At first created a function to check for valid_input but then I made it redundant because I found a simpler approach using a while loop
 
         ```
         def valid_input(text):
@@ -200,7 +200,9 @@ The live link can be found here - (https://hangman25.herokuapp.com/)
 
 * Many thanks to Chris Quinn, my mentor, for guidance and for his brilliant ideas
 
-## Websites that thought me python
+## Sources that thought me python and best practices
 
-* [code with mosh](https://codewithmosh.com/)
 * [Code Institute](https://learn.codeinstitute.net)
+* [code with mosh](https://codewithmosh.com/)
+* [Mimo](https://getmimo.com/)
+* [Real Python](https://realpython.com/)
