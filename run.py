@@ -40,7 +40,7 @@ def greeting():
         print("Sorry, You can`t have an empty nickname...")
         player = input("Choose a nickname:\n")
     time.sleep(0.5)
-    print(f"Hello, {player}! See the menu before we start the game")
+    print(f"Hello, {player}! See the menu before we start the game\n")
     time.sleep(1)
     menu()
     time.sleep(1)
@@ -93,7 +93,8 @@ def hangman(word):
                 hidden_word = "".join(word_as_list)
                 if "_" not in hidden_word:
                     guessed = True
-            print(f"Letters guessed already: {guessed_letters}")
+            print("Letters already guessed:", end=' ')
+            print(*guessed_letters, sep=', ')
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
                 print("You already guessed the word", guess)
@@ -107,7 +108,8 @@ def hangman(word):
         else:
             clear_terminal()
             print(f"{guess} Invalid. Try one letter")
-            print(f"Letters guessed already: {guessed_letters}")
+            print("Letters already guessed:", end=' ')
+            print(*guessed_letters, sep=', ')
         print(display_hangman(fails))
         print(hidden_word)
         print("\n")

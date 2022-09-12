@@ -2,11 +2,80 @@
 
 [Live link](https://hangman25.herokuapp.com/)
 
-This is a simple hangman game project, built with python, deployed on Heroku and is strictly terminal-based for user interaction.
-This project is designed for people who love puzzles, maybe bringing them back childhood memories, even tho it being somehow offensive, it's just a fun, thinking game.
-And hangman is a word-guessing puzzle where you are given a secret word, knowing only the length of it by underscores. And by guessing out some letters, try to figure out the secret word before the man hangs, when each wrong attempt adds a part of the man's body to the gallows.
+## This is a simple hangman game project, built with python, deployed on Heroku and is strictly terminal-based for user interaction.
+## This project is designed for people who love puzzles, maybe bringing them back childhood memories, even tho it being somehow offensive, it's just a fun, thinking game.
+## hangman is a word-guessing puzzle where you are given a secret word, knowing only the length of it by underscores. And by guessing out some letters, try to figure out the secret word before the man hangs, when each wrong attempt adds a part of the man's body to the gallows.
 
 # Features
+
+* As you run the game you are greeted by the hangman logo and asked to choose a nickname
+
+<img src="assets/logo.png" alt="logo">
+
+* Once the nickname is chosen, the menu comes in with 2 options
+    * See the rules
+    * Start the game
+
+<img src="assets/menu.png" alt="menu">
+
+* Menu input handling
+    * Everything except the requested inputs will throw an exception and notice the user of "Invalid input"
+
+<img src="assets/menu-invalid.png" alt="menu input handling">
+
+* The game rules
+    * Once you`re happy with the rules, you are given the choice of playing or not
+
+<img src="assets/rules.png" alt="rules">
+
+* Start playing input handling
+    * Everything except the requested inputs will prompt the user again with the valid inputs
+
+<img src="assets/rules-invalid.png" alt="rules input handling">
+
+* The game finally begins and here you see the empty gallows, the length of the word and are being asked to guess a letter
+
+<img src="assets/start.png" alt="game starts">
+
+* Now we have some guessing in action
+    * The terminal is cleared after every input
+    * The user sees the already guessed letters
+    * Every invalid input is handled and the user sees a warning of "'input' Invalid, try one letter"
+    * Invalid input is considered everything other than a letter or the whole word
+
+<img src="assets/guessing.png" alt="guessing letters">
+
+<img src="assets/already_guessed.png" alt="letters already guessed">
+
+<img src="assets/invalid_input1.png" alt="guessing input handling">
+
+<img src="assets/invalid_input2.png" alt="guessing input handling">
+
+* After an unsuccessfull game, we see the game over logo and here we`re asked if we want to play again
+    * Choosing Y(yes) will start a new game with a fresh terminal
+
+<img src="assets/gameover.png" alt="game ends logo">
+
+* Play loop input handling
+    * Everything except the requested inputs will prompt the user again with the valid inputs
+
+<img src="assets/play_loop_handling.png" alt="play loop input handling">
+
+* Should you not wish to play again... See you next time!
+
+<img src="assets/goodbye.png" alt="goodbye message">
+
+
+## Features left to implement
+
+* Connect to a english words database to generate a random word, rather then using an internal list
+* Game mode/difficulty 
+    * An option where the user can set the level of difficulty i.e Easy/Medium/Hard, which increases/decreses the number of wrong attempts
+* A scoreboard
+    * So the user can keep track of the games played 
+* Player vs Player
+    * Make the game more fun by playing with a partner where you play the same word, but neither of you can see the others guesses 
+    * Will workd great with a scoreboard too!
 
 # Technology 
 
@@ -14,6 +83,7 @@ And hangman is a word-guessing puzzle where you are given a secret word, knowing
 * Heroku
 * Github
 * Gitpod
+* [ASCII Generator](https://fsymbols.com/generators/carty/)
 
 ## Libraries 
 
@@ -22,6 +92,8 @@ And hangman is a word-guessing puzzle where you are given a secret word, knowing
 * Time
 
 # User stories
+
+### Based on supportive feedback I've implemented the Hangman and the Game Over logo, the length of the word (shown at the beginning of the game) and the following:
 
 * I want to see a fresh screen after a guess
     * Created a function to clear the terminal after each guess and when a new game begins
@@ -113,7 +185,7 @@ The live link can be found here - (https://hangman25.herokuapp.com/)
 
 # Credits
 
-[Hangman tutorial](https://github.com/kiteco/python-youtube-code/blob/master/build-hangman-in-python/hangman.py) - this project tutorial helped me find a solution to a issue I had, using enumerate to swap each "_" to the guessed letter.
+[Hangman tutorial](https://github.com/kiteco/python-youtube-code/blob/master/build-hangman-in-python/hangman.py) - This project tutorial helped me find a solution to a issue I had, using enumerate to swap each "_" to the guessed letter.
 
         ```
         word_as_list = list(hidden_word)
