@@ -1,10 +1,12 @@
 # Hangman
 
-[Live link](https://hangman25.herokuapp.com/)
-
-### This is a simple hangman game project, built with python, deployed on Heroku and is strictly terminal-based for user interaction.
+### This is a simple hangman game project, built with python, and runs in the Code Institute mock terminal deployed on Heroku.
 ### This project is designed for people who love puzzles, maybe bringing them back childhood memories, even tho it being somehow offensive, it's just a fun, thinking game.
 ### hangman is a word-guessing puzzle where you are given a secret word, knowing only the length of it by underscores. And by guessing out some letters, try to figure out the secret word before the man hangs, when each wrong attempt adds a part of the man's body to the gallows.
+
+[Here is the Live version of the project](https://hangman25.herokuapp.com/)
+
+<img src="assets/amiresponsive.png" alt="am i responsive screenshot">
 
 # Features
 
@@ -18,48 +20,20 @@
 
 <img src="assets/menu.png" alt="menu">
 
-* Menu input handling
-    * Everything except the requested inputs will throw an exception and notice the user of "Invalid input"
-
-<img src="assets/menu-invalid.png" alt="menu input handling">
-
 * The game rules
     * Once you`re happy with the rules, you are given the choice of playing or not
 
 <img src="assets/rules.png" alt="rules">
 
-* Start playing input handling
-    * Everything except the requested inputs will prompt the user again with the valid inputs
-
-<img src="assets/rules-invalid.png" alt="rules input handling">
-
-* The game finally begins and here you see the empty gallows, the length of the word and are being asked to guess a letter
+* The game finally begins and here you see the empty gallows, the length of the word and are being asked to guess a letter or the word
+    * Only one letter or a word of the same length as the secret word count as valid inputs
 
 <img src="assets/start.png" alt="game starts">
-
-* Now we have some guessing in action
-    * The terminal is cleared after every input
-    * The user sees the already guessed letters
-    * Every invalid input is handled and the user sees a warning of "'input' Invalid, try one letter"
-    * Invalid input is considered everything other than a letter or the whole word
-
-<img src="assets/guessing.png" alt="guessing letters">
-
-<img src="assets/already_guessed.png" alt="letters already guessed">
-
-<img src="assets/invalid_input1.png" alt="guessing input handling">
-
-<img src="assets/invalid_input2.png" alt="guessing input handling">
 
 * After an unsuccessfull game, we see the game over logo and here we`re asked if we want to play again
     * Choosing Y(yes) will start a new game with a fresh terminal
 
 <img src="assets/gameover.png" alt="game ends logo">
-
-* Play loop input handling
-    * Everything except the requested inputs will prompt the user again with the valid inputs
-
-<img src="assets/play_loop_handling.png" alt="play loop input handling">
 
 * Should you not wish to play again... See you next time!
 
@@ -76,6 +50,35 @@
 * Player vs Player
     * Make the game more fun by playing with a partner where you play the same word, but neither of you can see the others guesses 
     * Will workd great with a scoreboard too!
+
+# Project Planning 
+
+### When planning my program I had the following in mind:
+
+What functions do I need and what`s the best way to make my code OOP
+The steps are as follows:
+1. Make a list of words
+2. Create the hangman stages
+3. Create the greetings function
+4. Built a check_guess() function which I later embedded into the while loop of the hangman() function
+5. Built the play_loop function which starts the game again
+6. Create the menu() function which includes rules and the option to start the game
+7. Call the menu() function in the greetings() function
+8. Call the greetings() function in the global scope, this making it the only function called
+9. Use the time library for a better text flow in the game with time.sleep()
+10. Using the OS library, create a function to clear the terminal and call it in other functions where needed
+
+* User inputs:
+    * Where should I use them
+        * inputs are used in every function to ask for name, guess, yes/no values
+    * How best to deal with them
+        * using try blocks and if/else statements for handling
+    * What are all the ways to break the code so I can handle them
+        * passing integers for a string input
+        * return on no input
+        * white spaces
+        * multiple characters (for guessing)
+        * not the required input (Y/N)
 
 # Technology 
 
@@ -108,7 +111,36 @@
 
 ### All feedback received was positive and no errors encountered when playing, other than not guessing the word :).
 
-### To play on mobile, you need to choose desktop mode in the browser.
+### To play on mobile, you need to choose desktop mode in the browser(does not work on every phone).
+
+* Menu input handling
+    * Everything except the requested inputs will throw an exception and notice the user of "Invalid input"
+
+<img src="assets/menu-invalid.png" alt="menu input handling">
+
+* Start playing input handling
+    * Everything except the requested inputs will prompt the user again with the valid inputs
+
+<img src="assets/rules-invalid.png" alt="rules input handling">
+
+* Now we have some guessing in action
+    * The terminal is cleared after every input
+    * The user sees the already guessed letters
+    * Every invalid input is handled and the user sees a warning of "'input' Invalid, try one letter"
+    * Invalid input is considered everything other than a letter or the whole word
+
+<img src="assets/guessing.png" alt="guessing letters">
+
+<img src="assets/already_guessed.png" alt="letters already guessed">
+
+<img src="assets/invalid_input1.png" alt="guessing input handling">
+
+<img src="assets/invalid_input2.png" alt="guessing input handling">
+
+* Play loop input handling
+    * Everything except the requested inputs will prompt the user again with the valid inputs
+
+<img src="assets/play_loop_handling.png" alt="play loop input handling">
 
 ## Code validation
 
@@ -142,6 +174,8 @@
                 print("You can`t have an empty nickname...")
                 player = input("Choose a nickname:\n")
         ```
+
+### No bugs left unfixed
 
 # Local Development
 
@@ -199,6 +233,7 @@ The live link can be found here - (https://hangman25.herokuapp.com/)
 # Acknowledgements
 
 * Many thanks to Chris Quinn, my mentor, for guidance and for his brilliant ideas
+* Thanks to Code Institute for the project template
 
 ## Sources that thought me python and best practices
 

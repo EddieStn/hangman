@@ -96,6 +96,7 @@ def hangman(word):
             print("Letters already guessed:", end=' ')
             print(*guessed_letters, sep=', ')
         elif len(guess) == len(word) and guess.isalpha():
+            clear_terminal()
             if guess in guessed_words:
                 print("You already guessed the word", guess)
             elif guess != word:
