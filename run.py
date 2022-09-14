@@ -148,6 +148,7 @@ def menu():
                 time.sleep(1)
                 hangman(word)
             elif choice == "rules":
+                clear_terminal()
                 print("\n- Hangman is a puzzle game\n")
                 time.sleep(1)
                 print("- Your goal is to guess the secret word\n")

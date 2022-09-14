@@ -2,7 +2,7 @@
 
 ### This is a simple hangman game project, built with python, and runs in the Code Institute mock terminal deployed on Heroku.
 ### This project is designed for people who love puzzles, maybe bringing them back childhood memories, even tho it being somehow offensive, it's just a fun, thinking game.
-### hangman is a word-guessing puzzle where you are given a secret word, knowing only the length of it by underscores. And by guessing out some letters, try to figure out the secret word before the man hangs, when each wrong attempt adds a part of the man's body to the gallows.
+### hangman is a word-guessing puzzle where you are given a secret word, knowing only the length of it by underscores. And by guessing out some letters, try to figure out the secret word before the man hangs, where each wrong attempt adds a part of the man's body to the gallows.
 
 [Here is the Live version of the project](https://hangman25.herokuapp.com/)
 
@@ -39,7 +39,6 @@
 
 <img src="assets/goodbye.png" alt="goodbye message">
 
-
 ## Features left to implement
 
 * Connect to a english words database to generate a random word, rather then using an internal list
@@ -49,7 +48,7 @@
     * So the user can keep track of the games played 
 * Player vs Player
     * Make the game more fun by playing with a partner where you play the same word, but neither of you can see the others guesses 
-    * Will workd great with a scoreboard too!
+    * Will work great with a scoreboard too!
 
 # Project Planning 
 
@@ -181,12 +180,12 @@ The steps are as follows:
 
 ## Forking and Cloning
 
-## Forking a repository
+### Forking a repository
 ### A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project.
 1. On GitHub.com, navigate to the EddieStn/hangman repository.
 2. In the top-right corner of the page, click Fork.
 
-## Cloning your forked repository
+## Cloning the forked repository
 ### Right now, you have a fork of the hangman repository, but you do not have the files in that repository locally on your computer.
 1. On GitHub.com, navigate to your fork of the hangman repository.
 2. Above the list of files, click Code.
@@ -198,9 +197,15 @@ The steps are as follows:
 7. Press Enter. Your local clone will be created.
 8. Requirements.txt can be left empty as this project does not use any external libraries.
 
-# Deployment
-### The site was deployed to Heroku. The steps to deploy are as follows:
+# Local Deployment
+### Now you have a copy of the repository, but to make any change changes you need Gitpod code editor
+1. Go to gitpod.io and log in with your github account
+2. In Github on the hangman repository, click the green button "Gitpod"
+3. Now you have the hangman project in your workspace
+4. Clicking the project will install all the required packages and open the gitpod code editor
 
+# External Deployment
+### The site was deployed to Heroku. The steps to deploy are as follows:
 
 * Log in to Heroku Heroku
 * Click New
